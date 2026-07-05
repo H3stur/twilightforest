@@ -76,6 +76,10 @@ public class ItemTFLampOfCinders extends ItemTF {
         Block block = world.getBlock(x, y, z);
         if (block == TFBlocks.thorns) {
             world.setBlock(x, y, z, TFBlocks.burntThorns, world.getBlockMetadata(x, y, z) & 12, 2);
+
+            if (!world.isRemote) {
+                player.triggerAchievement(TFAchievementPage.twilightProgressThorns);
+            }
             return true;
         } else {
             return false;
